@@ -34,3 +34,6 @@ docker run \
   --volume $HOME/jenkins/jenkins-home:/var/jenkins_home \
   --volume $HOME/jenkins/jenkins-docker-certs:/certs/client:ro \
   custom-jenkins:0.1
+
+echo "Admin Password"
+echo $(docker exec custom-jenkins cat /var/jenkins_home/secrets/initialAdminPassword)
