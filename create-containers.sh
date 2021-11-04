@@ -2,7 +2,7 @@
 
 mkdir $HOME/jenkins
 sudo chgrp docker $HOME/jenkins
-sudo chown -R floobot:docker $HOME/jenkins
+sudo chown -R $(whoami):docker $HOME/jenkins
 
 docker network create jenkins
 docker run \
