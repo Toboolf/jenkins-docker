@@ -1,13 +1,13 @@
 #!/bin/sh
 
 mkdir $HOME/jenkins
-sudo chgrp docker $HOME/jenkins
-sudo chown -R $(whoami):docker $HOME/jenkins
+sudo chgrp staff $HOME/jenkins
+sudo chown -R $(whoami):staff $HOME/jenkins
 
 docker network create jenkins
 docker run \
+  --restart unless-stopped \
   --name jenkins-docker \
-  --rm \
   --detach \
   --privileged \
   --network jenkins \
@@ -22,8 +22,8 @@ docker run \
 docker build -t custom-jenkins:0.1 .
 
 docker run \
+  --restart unless-stopped \
   --name custom-jenkins \
-  --rm \
   --detach \
   --network jenkins \
   --env DOCKER_HOST=tcp://docker:2376 \
